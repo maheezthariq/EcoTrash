@@ -93,6 +93,7 @@ class _LoginState extends State<Login> {
             ),
             child: Center(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
@@ -115,10 +116,10 @@ class _LoginState extends State<Login> {
                     child: Container(
                         margin: const EdgeInsets.fromLTRB(80, 40, 80, 0),
                         height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                        // decoration: BoxDecoration(
+                        //   color: Colors.white.withOpacity(0.2),
+                        //   borderRadius: BorderRadius.circular(10),
+                        // ),
                         child: TextFormField(
                             onSaved: (value) {
                               _email = value!;
@@ -156,10 +157,10 @@ class _LoginState extends State<Login> {
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(80, 15, 80, 0),
                       height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                      // decoration: BoxDecoration(
+                      //   color: Colors.white.withOpacity(0.2),
+                      //   borderRadius: BorderRadius.circular(10),
+                      // ),
                       child: TextFormField(
                         onSaved: (value) {
                           _password = value!;
@@ -198,15 +199,15 @@ class _LoginState extends State<Login> {
                         //           const Profile()),
                         // );
 
-                         if (_formKey.currentState!.validate()) {
-                                print('valid form');
-                                _formKey.currentState!.save();
+                        if (_formKey.currentState!.validate()) {
+                          print('valid form');
+                          _formKey.currentState!.save();
 
-                                sendUser();
-                              } else {
-                                print('not valid form');
-                                return;
-                              }
+                          sendUser();
+                        } else {
+                          print('not valid form');
+                          return;
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors
