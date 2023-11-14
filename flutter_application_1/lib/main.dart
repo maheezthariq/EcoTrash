@@ -8,6 +8,7 @@ import 'package:flutter_application_1/resell/addproduct.dart';
 // import 'package:flutter_application_1/navigate.dart';
 import 'package:flutter_application_1/report.dart';
 import 'package:flutter_application_1/Tracking/example.dart';
+import 'package:flutter_application_1/signup.dart';
 
 void main() => runApp(
       DevicePreview(
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecotrsh',
-      home: GetStart(),
+      // home: GetStart(),
+      home: Signup(),
       // home: const Report(),
       // home: const GeolocatorWidget(),
       // home: Navigate(),

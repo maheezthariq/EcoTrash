@@ -9,7 +9,14 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  String? _userRole = 'Citizen';
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool passtoggle = true;
+  String? name;
+  String? email;
+  String? password;
+  String? repassword;
+  String? mobile;
 
   @override
   Widget build(BuildContext context) {
@@ -34,65 +41,19 @@ class _SignupState extends State<Signup> {
                     image: AssetImage('qd.png'), fit: BoxFit.cover),
               ),
             ),
-            // Container(
-            //   margin: EdgeInsets.fromLTRB(0, 30, 160, 0),
-            //   child: Text("CREATE ACCOUNT",
-            //       style: TextStyle(
-            //           fontSize: 20,
-            //           color: Colors.white,
-            //           letterSpacing: 1,
-            //           fontWeight: FontWeight.bold)),
-            // ),
-            // Container(
-            //   margin: EdgeInsets.fromLTRB(0, 20, 260, 0),
-            //   child: Text("User Role",
-            //       style: TextStyle(
-            //           fontSize: 16,
-            //           color: Colors.white,
-            //           letterSpacing: 1,
-            //           fontWeight: FontWeight.bold)),
-            // // ),
-            // Container(
-            //   margin: const EdgeInsets.fromLTRB(20, 2, 20, 0),
-            //   height: 50,
-            //   child: Row(
-            //     children: [
-            //       Radio<String>(
-            //         value: 'Citizen',
-            //         groupValue: _userRole,
-            //         onChanged: (String? value) {
-            //           setState(() {
-            //             _userRole = value;
-            //           });
-            //         },
-            //       ),
-            //       const Text("Citizen",
-            //           style: TextStyle(
-            //               fontSize: 14, color: Colors.white, letterSpacing: 1)),
-            //       const SizedBox(width: 30),
-            //       Radio<String>(
-            //         value: 'Waste Collector',
-            //         groupValue: _userRole,
-            //         onChanged: (String? value) {
-            //           setState(() {
-            //             _userRole = value;
-            //           });
-            //         },
-            //       ),
-            //       const Text('Waste Collector',
-            //           style: TextStyle(
-            //               fontSize: 14, color: Colors.white, letterSpacing: 1)),
-            //     ],
-            //   ),
-            // ),
-            Container(
-              margin: EdgeInsets.fromLTRB(0, 10, 260, 0),
-              child: Text("Full Name",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      letterSpacing: 1,
-                      fontWeight: FontWeight.bold)),
+
+          
+            Form(
+              key: _formKey,
+              child: Container(
+                margin: EdgeInsets.fromLTRB(0, 10, 260, 0),
+                child: Text("Full Name",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.bold)),
+              ),
             ),
             Container(
                 margin: const EdgeInsets.fromLTRB(20, 5, 20, 0),
@@ -101,7 +62,16 @@ class _SignupState extends State<Signup> {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const TextField(
+                child: TextFormField(
+                    validator: (text) {
+                              if (text!.isEmpty) {
+                                return "Name can't be empty";
+                              }
+                              return null;
+                            },
+                            onSaved: (text) {
+                              name = text;
+                            },
                     decoration: InputDecoration(
                   hintText: "Enter your name here",
                   filled: true,
@@ -128,7 +98,16 @@ class _SignupState extends State<Signup> {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const TextField(
+                child: TextFormField(
+                    validator: (text) {
+                              if (text!.isEmpty) {
+                                return "Name can't be empty";
+                              }
+                              return null;
+                            },
+                            onSaved: (text) {
+                              name = text;
+                            },
                     decoration: InputDecoration(
                   hintText: "Enter a valid username here",
                   filled: true,
@@ -155,7 +134,16 @@ class _SignupState extends State<Signup> {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const TextField(
+                child: TextFormField(
+                   validator: (text) {
+                              if (text!.isEmpty) {
+                                return "Email can't be empty";
+                              }
+                              return null;
+                            },
+                            onSaved: (text) {
+                              email = text;
+                            },
                     decoration: InputDecoration(
                   hintText: "Enter a valid email address here",
                   filled: true,
@@ -182,7 +170,19 @@ class _SignupState extends State<Signup> {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const TextField(
+                child: TextFormField(
+                  validator: (text) {
+                              if (text!.isEmpty) {
+                                return "Password can't be empty";
+                              }
+                              return null;
+                            },
+                            onSaved: (text) {
+                              password = text;
+                            },
+                            onChanged: (text) {
+                              password = text;
+                            },
                   decoration: InputDecoration(
                     hintText: "Enter a valid password here",
                     filled: true,
@@ -198,11 +198,21 @@ class _SignupState extends State<Signup> {
               margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => const Login()),
-                  );
+                //  Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (BuildContext context) => Login()),
+                //   );
+
+                 if (_formKey.currentState!.validate()) {
+                                print('valid form');
+                                _formKey.currentState!.save();
+
+                                sendUser();
+                              } else {
+                                print('not valid form');
+                                return;
+                              }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 1, 17, 1),
