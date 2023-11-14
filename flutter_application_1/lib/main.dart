@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecotrsh',
-      home: GetStart(),
-      // home: const Report(),
+      // home: GetStart(),
+      home: const Report(),
       // home: const GeolocatorWidget(),
       // home: Navigate(),
       // home: MaterialYou(),
