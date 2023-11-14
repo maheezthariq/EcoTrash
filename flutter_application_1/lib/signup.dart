@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:flutter_application_1/login.dart';
+import 'package:quickalert/quickalert.dart';
+import 'package:http/http.dart' as http;
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -17,6 +20,63 @@ class _SignupState extends State<Signup> {
   String? password;
   String? repassword;
   String? mobile;
+
+    void sendUser() async {
+    try {
+      final Map<String, String> headers = {
+        'Content-Type': 'application/json', // Set the content type
+      };
+      final Map<String, dynamic> data = {
+        "name": name,
+        "email": email,
+        "mobile": mobile,
+        "password": password,
+        "profile_pic": ""
+      };
+
+      final response = await http.post(
+        Uri.parse('http://localhost:7000/api/registerUser'),
+        headers: headers,
+        body: jsonEncode(data),
+      );
+
+      if (response.statusCode == 200) {
+        print('Registerred successfully');
+        print(response.body);
+        RegistrationConfirm();
+      } else {
+        print('Failed to send POST request ${response.statusCode}');
+        RegistrationError();
+      }
+    } catch (er) {
+      print(er);
+    }
+  }
+
+  void RegistrationConfirm() {
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.success,
+      title: "Registration",
+      text: 'Successfull!',
+      confirmBtnText: 'Continue',
+      confirmBtnColor: Color.fromARGB(255, 101, 145, 103),
+      onConfirmBtnTap: () async {
+        Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+      },
+    );
+  }
+
+  void RegistrationError() {
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.error,
+      title: "Oops!",
+      text: 'Sorry, Email & Mobile should be unique!',
+      confirmBtnText: 'Try again',
+      confirmBtnColor: Color.fromARGB(255, 67, 78, 68),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

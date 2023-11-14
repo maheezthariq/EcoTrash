@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:flutter_application_1/signup.dart';
 import 'package:flutter_application_1/profile/profile.dart';
 import 'package:flutter_application_1/WasteCollector/loginWC.dart';
-import 'package:quick_alert/quick_alert.dart';
-import 'path_to_your_file.dart';
+import 'package:quickalert/quickalert.dart';
+// import 'path_to_your_file.dart';
 import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
@@ -16,7 +16,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? _email;
   String? _password;
 
@@ -83,7 +83,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
-          key: formkey,
+          key: _formKey,
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -198,7 +198,7 @@ class _LoginState extends State<Login> {
                         //           const Profile()),
                         // );
 
-                         if (formKey.currentState!.validate()) {
+                         if (_formKey.currentState!.validate()) {
                                 print('valid form');
                                 formKey.currentState!.save();
 
