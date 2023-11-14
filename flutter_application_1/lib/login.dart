@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
   String? _email;
   String? _password;
 
-  void loginUser() async {
+  void sendUser() async {
     try {
       final Map<String, String> headers = {
         'Content-Type': 'application/json', // Set the content type
@@ -200,7 +200,7 @@ class _LoginState extends State<Login> {
 
                          if (_formKey.currentState!.validate()) {
                                 print('valid form');
-                                formKey.currentState!.save();
+                                _formKey.currentState!.save();
 
                                 sendUser();
                               } else {
