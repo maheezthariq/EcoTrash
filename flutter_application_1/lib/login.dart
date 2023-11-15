@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
       };
 
       final response = await http.post(
-        Uri.parse('http://localhost:7000/api/login'),
+        Uri.parse('http://localhost:5000/api/v1/login'),
         headers: headers,
         body: jsonEncode(data),
       );
@@ -134,7 +134,7 @@ class _LoginState extends State<Login> {
                               return null;
                             },
                             decoration: InputDecoration(
-                              hintText: "Username",
+                              hintText: "UserEmail",
                               contentPadding: EdgeInsets.symmetric(
                                   vertical: 15.0, horizontal: 10.0),
                               filled: true,
