@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:flutter_application_1/login.dart';
-import 'package:quickalert/quickalert.dart';
+
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:quickalert/quickalert.dart';
+import 'package:flutter_application_1/login.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -18,10 +19,10 @@ class _SignupState extends State<Signup> {
   String? name;
   String? email;
   String? password;
-  String? repassword;
-  String? mobile;
+  String? rePassword;
+  String? userName;
 
-    void sendUser() async {
+  void sendUser() async {
     try {
       final Map<String, String> headers = {
         'Content-Type': 'application/json', // Set the content type
@@ -29,27 +30,27 @@ class _SignupState extends State<Signup> {
       final Map<String, dynamic> data = {
         "name": name,
         "email": email,
-        "mobile": mobile,
+        "userName": userName,
         "password": password,
         "profile_pic": ""
       };
 
       final response = await http.post(
-        Uri.parse('http://localhost:7000/api/registerUser'),
+        Uri.parse('http://localhost:5000/api/v1/Signup'),
         headers: headers,
         body: jsonEncode(data),
       );
 
       if (response.statusCode == 200) {
-        print('Registerred successfully');
-        print(response.body);
+        debugPrint('Registered successfully');
+        debugPrint(response.body);
         RegistrationConfirm();
       } else {
-        print('Failed to send POST request ${response.statusCode}');
+        debugPrint('Failed to send POST request ${response.statusCode}');
         RegistrationError();
       }
     } catch (er) {
-      print(er);
+      debugPrint(er.toString());
     }
   }
 
@@ -60,9 +61,12 @@ class _SignupState extends State<Signup> {
       title: "Registration",
       text: 'Successfull!',
       confirmBtnText: 'Continue',
-      confirmBtnColor: Color.fromARGB(255, 101, 145, 103),
+      confirmBtnColor: const Color.fromARGB(255, 101, 145, 103),
       onConfirmBtnTap: () async {
-        Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Login()),
+        );
       },
     );
   }
@@ -74,7 +78,7 @@ class _SignupState extends State<Signup> {
       title: "Oops!",
       text: 'Sorry, Email & Mobile should be unique!',
       confirmBtnText: 'Try again',
-      confirmBtnColor: Color.fromARGB(255, 67, 78, 68),
+      confirmBtnColor: const Color.fromARGB(255, 67, 78, 68),
     );
   }
 
@@ -95,19 +99,17 @@ class _SignupState extends State<Signup> {
             Container(
               width: 80,
               height: 100,
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('qd.png'), fit: BoxFit.cover),
               ),
             ),
-
-          
             Form(
               key: _formKey,
               child: Container(
-                margin: EdgeInsets.fromLTRB(0, 10, 260, 0),
-                child: Text("Full Name",
+                margin: const EdgeInsets.fromLTRB(0, 10, 260, 0),
+                child: const Text("Full Name",
                     style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -124,27 +126,30 @@ class _SignupState extends State<Signup> {
                 ),
                 child: TextFormField(
                     validator: (text) {
-                              if (text!.isEmpty) {
-                                return "Name can't be empty";
-                              }
-                              return null;
-                            },
-                            onSaved: (text) {
-                              name = text;
-                            },
-                    decoration: InputDecoration(
-                  hintText: "Enter your name here",
-                  filled: true,
-                  fillColor: Colors.transparent,
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                ))),
+                      if (text!.isEmpty) {
+                        return "Name can't be empty";
+                      }
+                      return null;
+                    },
+                    onSaved: (text) {
+                      name = text;
+                    },
+                    onChanged: (text) {
+                    name = text;
+                  },
+                    decoration: const InputDecoration(
+                      hintText: "Enter your name here",
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ))),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 30, 260, 0),
-              child: Text("Username",
+              margin: const EdgeInsets.fromLTRB(0, 30, 260, 0),
+              child: const Text("Username",
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -160,27 +165,30 @@ class _SignupState extends State<Signup> {
                 ),
                 child: TextFormField(
                     validator: (text) {
-                              if (text!.isEmpty) {
-                                return "Name can't be empty";
-                              }
-                              return null;
-                            },
-                            onSaved: (text) {
-                              name = text;
-                            },
-                    decoration: InputDecoration(
-                  hintText: "Enter a valid username here",
-                  filled: true,
-                  fillColor: Colors.transparent,
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                ))),
+                      if (text!.isEmpty) {
+                        return "UserName can't be empty";
+                      }
+                      return null;
+                    },
+                    onSaved: (text) {
+                      userName = text;
+                    },
+                    onChanged: (text) {
+                    userName = text;
+                  },
+                    decoration: const InputDecoration(
+                      hintText: "Enter a valid username here",
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ))),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 30, 300, 0),
-              child: Text("Email",
+              margin: const EdgeInsets.fromLTRB(0, 30, 300, 0),
+              child: const Text("Email",
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -195,28 +203,31 @@ class _SignupState extends State<Signup> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextFormField(
-                   validator: (text) {
-                              if (text!.isEmpty) {
-                                return "Email can't be empty";
-                              }
-                              return null;
-                            },
-                            onSaved: (text) {
-                              email = text;
-                            },
-                    decoration: InputDecoration(
-                  hintText: "Enter a valid email address here",
-                  filled: true,
-                  fillColor: Colors.transparent,
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                ))),
+                    validator: (text) {
+                      if (text!.isEmpty) {
+                        return "Email can't be empty";
+                      }
+                      return null;
+                    },
+                    onSaved: (text) {
+                      email = text;
+                    },
+                    onChanged: (text) {
+                    email = text;
+                  },
+                    decoration: const InputDecoration(
+                      hintText: "Enter a valid email address here",
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ))),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 30, 260, 0),
-              child: Text("Password",
+              margin: const EdgeInsets.fromLTRB(0, 30, 260, 0),
+              child: const Text("Password",
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -232,17 +243,18 @@ class _SignupState extends State<Signup> {
                 ),
                 child: TextFormField(
                   validator: (text) {
-                              if (text!.isEmpty) {
-                                return "Password can't be empty";
-                              }
-                              return null;
-                            },
-                            onSaved: (text) {
-                              password = text;
-                            },
-                            onChanged: (text) {
-                              password = text;
-                            },
+                    if (text!.isEmpty) {
+                      return "Password can't be empty";
+                    }
+                    return null;
+                  },
+                  onSaved: (text) {
+                    password = text;
+                  },
+                  onChanged: (text) {
+                    password = text;
+                  },
+                  obscureText: passtoggle,
                   decoration: InputDecoration(
                     hintText: "Enter a valid password here",
                     filled: true,
@@ -252,27 +264,27 @@ class _SignupState extends State<Signup> {
                       borderSide: BorderSide(color: Colors.green),
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        passtoggle ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          passtoggle = !passtoggle;
+                        });
+                      },
+                    ),
                   ),
                 )),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: ElevatedButton(
                 onPressed: () {
-                //  Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (BuildContext context) => Login()),
-                //   );
-
-                 if (_formKey.currentState!.validate()) {
-                                print('valid form');
-                                _formKey.currentState!.save();
-
-                                sendUser();
-                              } else {
-                                print('not valid form');
-                                return;
-                              }
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    sendUser();
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 1, 17, 1),
