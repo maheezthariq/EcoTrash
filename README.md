@@ -6,6 +6,7 @@ The Waste Management Project is an innovative solution designed to bridge the ga
 
 # Overview
 User1 - Public
+
 Features:
 1.Smart Bin Locator:
 Easily locate the nearest available smart bin for proper waste disposal.
@@ -23,7 +24,8 @@ Facilitate the exchange or resale of items within the community, promoting susta
 Report instances of improper waste disposal or broken bins.
 Contribute to a cleaner environment by actively participating in waste management.
 ____________________________________________________________________________________________________________________________________________________________________
-User1 - Public
+User2 - Waste Collector
+
 Features:
 1.Bin Monitoring:
 Track the filling status of smart bins in real-time.
