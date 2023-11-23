@@ -59,8 +59,8 @@ class _SignupState extends State<Signup> {
       context: context,
       type: QuickAlertType.success,
       title: "Registration",
-      text: 'Successfull!',
-      confirmBtnText: 'Continue',
+      text: 'Successfull',
+      confirmBtnText: 'Login',
       confirmBtnColor: const Color.fromARGB(255, 101, 145, 103),
       onConfirmBtnTap: () async {
         Navigator.push(
@@ -76,7 +76,7 @@ class _SignupState extends State<Signup> {
       context: context,
       type: QuickAlertType.error,
       title: "Oops!",
-      text: 'Sorry, Email & Mobile should be unique!',
+      text: 'Something went wrong!',
       confirmBtnText: 'Try again',
       confirmBtnColor: const Color.fromARGB(255, 67, 78, 68),
     );
