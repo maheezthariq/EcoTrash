@@ -39,11 +39,11 @@ class MyApp extends StatelessWidget {
       // home: Signup(),
       // home: const Report(),
       // home: const GeolocatorWidget(),
-      // home: Profile()
+      home: Profile(),
       // home: Navigate(),
       // home: MaterialYou(),
       // home: AddProduct(),
-      home: ReportWC(),
+      // home: ReportWC(),
 
       // routes: {
       //   '/navigationbar': (context) => const MaterialYou(),

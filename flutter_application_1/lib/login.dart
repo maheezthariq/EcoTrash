@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
         LoginConfirm();
         Future.delayed(const Duration(seconds: 1), () {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/userHome', (route) => false);
+              context, '/profile', (route) => true);
         });
       } else {
         print('Failed to send POST request ${response.statusCode}');
@@ -62,7 +62,8 @@ class _LoginState extends State<Login> {
       confirmBtnText: 'Continue',
       confirmBtnColor: const Color.fromARGB(255, 101, 145, 103),
       onConfirmBtnTap: () async {
-        Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/profile/profile.dart', (route) => true);
       },
     );
   }
