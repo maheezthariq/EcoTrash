@@ -41,6 +41,10 @@ dependencies:
   geocoding: ^2.1.1
   quickalert: ^1.0.2
   http: ^0.13.3
+  google_maps_flutter: ^2.0.10
+  google_maps: ^5.1.0
+  flutter_html: ^2.1.1
+  
 
 dev_dependencies:
   flutter_test:

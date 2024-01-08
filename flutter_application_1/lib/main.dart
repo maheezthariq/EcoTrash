@@ -9,7 +9,7 @@ import 'package:flutter_application_1/profile/profile.dart';
 import 'package:flutter_application_1/resell/addproduct.dart';
 // import 'package:flutter_application_1/navigate.dart';
 import 'package:flutter_application_1/report.dart';
-import 'package:flutter_application_1/Tracking/example.dart';
+import 'package:flutter_application_1/Tracking/Tracking.dart';
 import 'package:flutter_application_1/signup.dart';
 import 'package:flutter_application_1/mainpage.dart';
 import 'package:flutter_application_1/profile/profile.dart';
@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
       // home: MaterialYou(),
       // home: AddProduct(),
       // home: ReportWC(),
+      // home: const TrackingPage(),
 
       // routes: {
       //   '/navigationbar': (context) => const MaterialYou(),
