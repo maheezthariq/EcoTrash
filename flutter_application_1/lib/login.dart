@@ -40,10 +40,10 @@ class _LoginState extends State<Login> {
         print('Login successfully');
         print(response.body);
         LoginConfirm();
-        Future.delayed(const Duration(seconds: 1), () {
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/profile', (route) => true);
-        });
+        // Future.delayed(const Duration(seconds: 2), () {
+        //   Navigator.pushNamedAndRemoveUntil(
+        //       context, '/profile/profile.dart', (route) => true);
+        // });
       } else {
         print('Failed to send POST request ${response.statusCode}');
         LoginError();
@@ -62,8 +62,10 @@ class _LoginState extends State<Login> {
       confirmBtnText: 'Continue',
       confirmBtnColor: const Color.fromARGB(255, 101, 145, 103),
       onConfirmBtnTap: () async {
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/profile/profile.dart', (route) => true);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Profile()),
+        );
       },
     );
   }

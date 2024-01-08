@@ -4,6 +4,7 @@ const DbConnection = require('./Database');
 const corsOptions = require("./config/corsOption");
 const cors = require('cors');
 const UserController = require("./Controllers/UserController");
+const wastecollectorController = require("./Controllers/wastecollectorController");
 
 require('dotenv').config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // Controller
 app.use('/api/v1/', UserController);
+app.use('/api/v1/wastecollector/', wastecollectorController);
 
 app.get('/*', (req,res)=>{
     res.status(404).send(`<h1>404 Error<h1>`);
