@@ -5,7 +5,7 @@
 The Waste Management Project is an innovative solution designed to bridge the gap between the public and waste collectors, fostering a collaborative and environmentally conscious community. This platform serves two primary user groups: the Public and Waste Collectors.
 
 # Overview
-Features of User1 - Public
+Features of User - Public
 
 1.Smart Bin Locator:
 Easily locate the nearest available smart bin for proper waste disposal.
