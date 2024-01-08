@@ -40,9 +40,9 @@ class _LoginState extends State<Login> {
         print('Login successfully');
         print(response.body);
         LoginConfirm();
-        // Future.delayed(const Duration(seconds: 2), () {
+        // Future.delayed(const Duration(seconds: 1), () {
         //   Navigator.pushNamedAndRemoveUntil(
-        //       context, '/profile/profile.dart', (route) => true);
+        //       context, '/profile', (route) => true);
         // });
       } else {
         print('Failed to send POST request ${response.statusCode}');

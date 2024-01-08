@@ -3,76 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/signup.dart';
 import 'package:flutter_application_1/profile/profile.dart';
 
-class LoginWC extends StatefulWidget {
-  LoginWC({Key? key}) : super(key: key);
-
-  @override
-  State<LoginWC> createState() => _LoginState();
-}
-
-class _LoginState extends State<LoginWC> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String? _email;
-  String? _password;
-
-  void sendUser() async {
-    try {
-      final Map<String, String> headers = {
-        'Content-Type': 'application/json', // Set the content type
-      };
-      final Map<String, dynamic> data = {
-        "email": _email,
-        "password": _password,
-      };
-
-      final response = await http.post(
-        Uri.parse('http://localhost:5000/api/v1/login'),
-        headers: headers,
-        body: jsonEncode(data),
-      );
-
-      if (response.statusCode == 200) {
-        print('Login successfully');
-        print(response.body);
-        LoginConfirm();
-        Future.delayed(const Duration(seconds: 1), () {
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/profile', (route) => true);
-        });
-      } else {
-        print('Failed to send POST request ${response.statusCode}');
-        LoginError();
-      }
-    } catch (er) {
-      print(er);
-    }
-  }
-
-  void LoginConfirm() {
-    QuickAlert.show(
-      context: context,
-      type: QuickAlertType.success,
-      title: "Login",
-      text: 'Successfull!',
-      confirmBtnText: 'Continue',
-      confirmBtnColor: const Color.fromARGB(255, 101, 145, 103),
-      onConfirmBtnTap: () async {
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/profile/profile.dart', (route) => true);
-      },
-    );
-  }
-
-  void LoginError() {
-    QuickAlert.show(
-      context: context,
-      type: QuickAlertType.error,
-      title: "Oops!",
-      text: 'Incorrect username or password!',
-      confirmBtnText: 'Try again',
-      confirmBtnColor: Color.fromARGB(255, 67, 78, 68),
-    );
-  }
+class LoginWC extends StatelessWidget {
+  const LoginWC({super.key});
 
   @override
   Widget build(BuildContext context) {
