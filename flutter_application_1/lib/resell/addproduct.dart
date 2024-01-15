@@ -40,7 +40,7 @@ class _AddProductState extends State<AddProduct> {
             Container(
               margin: EdgeInsets.fromLTRB(40, 30, 190, 0),
               child: Text(
-                "Full Name",
+                "Name",
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w200,
@@ -52,7 +52,7 @@ class _AddProductState extends State<AddProduct> {
               height: 50,
               child: const TextField(
                 decoration: InputDecoration(
-                  hintText: "Enter your full name here",
+                  hintText: "Enter your name here",
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
                   filled: true,
@@ -164,7 +164,7 @@ class _AddProductState extends State<AddProduct> {
             Container(
               margin: EdgeInsets.fromLTRB(40, 10, 180, 0),
               child: const Text(
-                "Enter your name here",
+                "Phone Number",
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w200,
