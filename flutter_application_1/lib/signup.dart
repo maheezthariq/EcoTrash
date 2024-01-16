@@ -277,6 +277,60 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
                 )),
+
+                Container(
+              margin: const EdgeInsets.fromLTRB(0, 30, 200, 0),
+              child: const Text("Confirm Password",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.bold)),
+            ),
+            Container(
+                margin: const EdgeInsets.fromLTRB(20, 5, 20, 0),
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextFormField(
+                  validator: (text) {
+                    if (text!.isEmpty) {
+                      return "Password can't be empty";
+                    }
+                    return null;
+                  },
+                  onSaved: (text) {
+                    password = text;
+                  },
+                  onChanged: (text) {
+                    password = text;
+                  },
+                  obscureText: passtoggle,
+                  decoration: InputDecoration(
+                    hintText: "Enter a valid password here",
+                    filled: true,
+                    fillColor: Colors.transparent,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        passtoggle ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          passtoggle = !passtoggle;
+                        });
+                      },
+                    ),
+                  ),
+                )),
+
             Container(
               margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: ElevatedButton(
