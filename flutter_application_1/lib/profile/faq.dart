@@ -18,21 +18,10 @@ class FAQPage extends StatelessWidget {
           'To reset your password, tap on the "Forgot Password" link on the login screen and follow the instructions sent to your registered email address.'
     },
     {
-      'question': 'Can I use my social media accounts to log in?',
-      'answer':
-          'Yes, you can log in using your social media accounts such as Facebook, Google, or Twitter.'
-    },
-    {
-      'question': 'How can I change my profile picture?',
-      'answer':
-          'To change your profile picture, go to the profile settings and tap on the "Change Picture" option.'
-    },
-    {
       'question': 'Is my personal information secure?',
       'answer':
           'Yes, we take the security of your personal information seriously and follow industry-standard practices to protect it.'
     },
-    // Add more FAQs here...
   ];
 
   @override
