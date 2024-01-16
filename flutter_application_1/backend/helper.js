@@ -20,14 +20,14 @@ const hashPassword = async (password) => {
       UserEmail: validData.UserEmail
     };
     
-    const secret = 'Hi MALINI I AM KRISHNAN';
+    const secret = 'Eco Trash';
     const options = { expiresIn: '1h' };
   
     return jwt.sign(payload, secret, options);
   }
   
   function verifyAccessToken(token) {
-    const secret = 'Hi MALINI I AM KRISHNAN';
+    const secret = 'Eco Trash';
   
     try {
       const decoded = jwt.verify(token, secret);
