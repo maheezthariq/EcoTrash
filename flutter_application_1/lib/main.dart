@@ -10,6 +10,7 @@ import 'package:flutter_application_1/resell/addproduct.dart';
 // import 'package:flutter_application_1/navigate.dart';
 import 'package:flutter_application_1/report.dart';
 import 'package:flutter_application_1/Tracking/Tracking.dart';
+import 'package:flutter_application_1/resell/resellmain.dart';
 import 'package:flutter_application_1/signup.dart';
 import 'package:flutter_application_1/mainpage.dart';
 import 'package:flutter_application_1/profile/profile.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecotrsh',
-      home: GetStart(),
+       home: GetStart(),
       // home: MainPage(),
       // home: Signup(),
       // home: const Report(),
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
       // home: AddProduct(),
       // home: ReportWC(),
       // home: const TrackingPage(),
+      // home: Resell(),
 
       // routes: {
       //   '/navigationbar': (context) => const MaterialYou(),

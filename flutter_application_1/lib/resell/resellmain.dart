@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/MainPage.dart';
 import 'package:flutter_application_1/resell/addproduct.dart';
 import 'package:flutter_application_1/resell/description.dart';
 
@@ -16,6 +17,15 @@ class Resell extends StatelessWidget {
           'Eco Seller',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
         ),
+
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+             Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => const MainPage()),
+                  );})
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -87,12 +97,7 @@ class Resell extends StatelessWidget {
 
             GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (BuildContext context) =>
-                //   const EcoSeller()
-                //   ),
-                // );
+                
               },
               child: Container(
                 margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
