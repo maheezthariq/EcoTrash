@@ -7,6 +7,7 @@ import 'package:flutter_application_1/report.dart';
 import 'package:flutter_application_1/MainPage.dart';
 import 'package:flutter_application_1/Tracking/Tracking.dart';
 // import 'package:flutter_application_1/WasteCollector/ReportWC.dart';
+import 'package:flutter_application_1/profile/faq.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key}); // Use 'Key?' instead of 'super.key'
@@ -108,16 +109,21 @@ class _ProfileState extends State<Profile> {
                   height: 40,
                 ),
                 const Divider(),
-                ProfileWidget(
-                  icon: Icons.settings,
-                  title: "Settings",
-                  onPress: () {},
-                  endIcon: true, // Set 'endIcon' to true
-                ),
+                // ProfileWidget(
+                //   icon: Icons.settings,
+                //   title: "Settings",
+                //   onPress: () {},
+                //   endIcon: true, // Set 'endIcon' to true
+                // ),
                 ProfileWidget(
                   icon: Icons.chat_bubble,
                   title: "FAQ",
-                  onPress: () {},
+                  onPress: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FAQPage()),
+                    );
+                  },
                   endIcon: true, // Set 'endIcon' to true
                 ),
                 ProfileWidget(
