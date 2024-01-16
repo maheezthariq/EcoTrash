@@ -40,6 +40,7 @@ class FAQPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('FAQ'),
+        backgroundColor: Colors.green, // Set the appbar color to green
       ),
       body: ListView.builder(
         itemCount: faqList.length,

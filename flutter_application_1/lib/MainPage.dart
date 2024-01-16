@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_application_1/profile/editprofile.dart';
+import 'package:flutter_application_1/profile/faq.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -10,55 +11,53 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 2, 83, 45).withOpacity(0.6),
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
-        child: Container(
-          height: 300,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-            colors: <Color> [
-              const Color.fromARGB(255, 0, 0, 0),
-              const Color.fromARGB(240, 3, 158, 42),
-              const Color.fromARGB(255, 0, 0, 0),
-            ],
-          ),
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
+          preferredSize: const Size.fromHeight(100.0),
+          child: Container(
+            height: 300,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: <Color>[
+                  const Color.fromARGB(255, 0, 0, 0),
+                  const Color.fromARGB(240, 3, 158, 42),
+                  const Color.fromARGB(255, 0, 0, 0),
+                ],
+              ),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
             ),
-          ),
-          child: SafeArea(
-            child: Center(
-              child: ListTile(
-                title: const Text(
-                  'Welcome',
-                  // textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w800,
-                    color: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-                trailing: IconButton(
-                  icon: const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => const Editprofile(),
+            child: SafeArea(
+              child: Center(
+                child: ListTile(
+                    title: const Text(
+                      'Welcome',
+                      // textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w800,
+                        color: Color.fromARGB(255, 255, 255, 255),
                       ),
-                    );
-                  },
-              )
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const Editprofile(),
+                          ),
+                        );
+                      },
+                    )),
+              ),
             ),
-            ),
-
-          ),
-          )
-      ),
+          )),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -300,7 +299,12 @@ class MainPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.chat),
           backgroundColor: Color.fromARGB(52, 239, 243, 11),
-          onPressed: () {}),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FAQPage()),
+            );
+          }),
     );
   }
 }
