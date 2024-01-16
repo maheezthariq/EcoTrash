@@ -5,6 +5,7 @@ import 'package:flutter_application_1/signup.dart';
 import 'package:flutter_application_1/profile/profile.dart';
 import 'package:flutter_application_1/WasteCollector/loginWC.dart';
 import 'package:quickalert/quickalert.dart';
+import 'package:flutter_application_1/fpass.dart';  
 // import 'path_to_your_file.dart';
 import 'package:http/http.dart' as http;
 
@@ -235,7 +236,12 @@ class _LoginState extends State<Login> {
                     child: Row(
                       children: <Widget>[
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ForgetPasswordPage()),
+                                  );
+                            },
                             child: const Text("Forgot password?",
                                 style: TextStyle(
                                   fontSize: 15,
