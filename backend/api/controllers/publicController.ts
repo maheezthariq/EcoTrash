@@ -5,9 +5,9 @@ import jwt from "jsonwebtoken";
 
 const signup = async (req: Request, res: Response) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
     const hashedPassword = await bcrypt.hash(password, 12);
-    const user = new User({ name: name, email:email, password: hashedPassword });
+    const user = new User({ name: name, email:email, password: hashedPassword, role: role });
     await user.save();
     res.send({ success: true, message: "User created" });
   } catch (error) {
@@ -26,10 +26,15 @@ const login = async (req: Request, res: Response) => {
     if (!isPasswordValid) {
       return res.send({ success: false, message: "Invalid password" });
     }
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {
-      expiresIn: "1h",
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!);
+    res.send({
+      success: true,
+      token: token,
+      _id: user._id,
+      role: user.role,
+      name: user.name,
+      email: user.email,
     });
-    res.send({ success: true, token: token, userId: user._id, userRole: user.role });
   } catch (error) {
     res.send({ success: false, message: "An unknown error occurred" });
   }

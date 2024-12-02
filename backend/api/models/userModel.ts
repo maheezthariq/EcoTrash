@@ -3,9 +3,11 @@ export interface IUser {
   role: UserRole;
   email: string;
   password: string;
+  token?: string;
 }
 
 export enum UserRole {
   SUPER_ADMIN = "SUPER_ADMIN",
-  SALES_REP = "SALES_REP",
+  WASTE_COLLECTOR = "WASTE_COLLECTOR",
+  USER = "USER"
 }

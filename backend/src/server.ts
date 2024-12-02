@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import userRoutes from "../api/routes/userRoutes";
+import publicRoutes from "../api/routes/publicRoutes";
 import wasteCollectorRoutes from "../api/routes/wasteCollectorRoutes";
 
 const app = express();
@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/uploads", express.static("uploads"));
 
-app.use("/auth/user", userRoutes);
+app.use("/public", publicRoutes);
 app.use("/auth/wasteCollector", wasteCollectorRoutes);
 
 app.use(function (req, res) {

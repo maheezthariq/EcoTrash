@@ -9,7 +9,7 @@ const userSchema = new Schema<IUser>({
   role: {
     type: String,
     required: true,
-    default: UserRole.SALES_REP
+    default: UserRole.USER
   },
   email: {
     type: String,
