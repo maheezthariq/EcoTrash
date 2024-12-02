@@ -10,6 +10,7 @@ const signup = async (req: Request, res: Response) => {
     const user = new User({ name: name, email:email, password: hashedPassword, role: role });
     await user.save();
     res.send({ success: true, message: "User created" });
+    
   } catch (error) {
     res.send({ success: false, message: "An unknown error occurred" });
   }
